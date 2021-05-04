@@ -3,9 +3,7 @@ package itacademy.project.controller;
 import itacademy.project.entity.Task;
 import itacademy.project.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,13 @@ public class TaskController {
     @GetMapping
     public List<Task> getAllTasks(){
         return taskService.getAllTasks();
+    }
+    @PostMapping
+    public Task save(@RequestBody Task task){
+        return taskService.save(task);
+    }
+    @GetMapping("/{taskId}")
+    public Task getById(@PathVariable Long taskId){
+        return taskService.getById(taskId);
     }
 }

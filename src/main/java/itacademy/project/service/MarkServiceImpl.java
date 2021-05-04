@@ -20,4 +20,9 @@ public class MarkServiceImpl implements MarkService {
     public Mark save(Mark mark) {
         return markRepository.save(mark);
     }
+
+    @Override
+    public Mark getById(Long id) {
+        return markRepository.findById(id).orElse(null);
+    }
 }

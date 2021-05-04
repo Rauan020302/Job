@@ -24,6 +24,10 @@ public class Task {
     @JoinColumn(name = "mark_id")
     private Mark mark;
 
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+
     @Column(name = "task_date")
     private LocalDate taskDate = LocalDate.now();
 

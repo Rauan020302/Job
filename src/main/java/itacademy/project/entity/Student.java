@@ -30,8 +30,12 @@ public class Student {
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class aClass;
+    @JoinColumn(name = "cabinet_id")
+    private Cabinet cabinet;
 
 }

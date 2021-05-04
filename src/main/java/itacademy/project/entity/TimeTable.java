@@ -22,10 +22,6 @@ public class TimeTable {
     @Column(name = "day_of_week")
     private EnumTimeTable dayOfWeek;
 
-    @OneToMany
-    @JoinColumn(name = "subject_id")
-    private List<Subject> subject;
-
     @Column(name = "date_start")
     private LocalDate dateStart;
 

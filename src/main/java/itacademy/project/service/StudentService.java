@@ -5,5 +5,7 @@ import itacademy.project.entity.Student;
 import java.util.List;
 
 public interface StudentService {
-    public List<Student> getAllStudents();
+    List<Student> getAllStudents();
+    Student save(Student student);
+    Student getStudentById(Long id);
 }

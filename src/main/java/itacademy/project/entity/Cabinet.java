@@ -6,25 +6,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "class")
+@Table(name = "cabinet")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
 @Builder
-public class Class {
+public class Cabinet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "class_name")
+    @Column(name = "cabinet_name")
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
-
-//    @OneToMany
-//    @JoinColumn(name = "students_id")
-//    private List<Student> student;
 }

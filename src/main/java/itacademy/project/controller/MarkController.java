@@ -21,5 +21,9 @@ public class MarkController {
     public Mark save(@RequestBody Mark mark){
         return markService.save(mark);
     }
+    @GetMapping("/{markId}")
+    public Mark getMarkById(@PathVariable Long markId){
+        return markService.getById(markId);
+    }
 
 }

@@ -15,4 +15,14 @@ public class TimeTableServiceImpl implements TimeTableService {
     public List<TimeTable> getAllTimeTables() {
         return timeTableRepostitory.findAll();
     }
+
+    @Override
+    public TimeTable save(TimeTable timeTable) {
+        return timeTableRepostitory.save(timeTable);
+    }
+
+    @Override
+    public TimeTable getTimeTableById(Long id) {
+        return timeTableRepostitory.findById(id).orElse(null);
+    }
 }

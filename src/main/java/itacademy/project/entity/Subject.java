@@ -21,7 +21,7 @@ public class Subject {
     @Column(name = "subject_name")
     private EnumSubject name;
 
-    @OneToMany
-    @JoinColumn(name = "task_id")
-    private List<Task> task;
+    @ManyToOne
+    @JoinColumn(name = "time_table_id")
+    private TimeTable timeTable;
 }

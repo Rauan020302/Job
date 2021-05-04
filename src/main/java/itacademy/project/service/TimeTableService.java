@@ -5,5 +5,7 @@ import itacademy.project.entity.TimeTable;
 import java.util.List;
 
 public interface TimeTableService {
-    public List<TimeTable> getAllTimeTables();
+    List<TimeTable> getAllTimeTables();
+    TimeTable save(TimeTable timeTable);
+    TimeTable getTimeTableById(Long id);
 }

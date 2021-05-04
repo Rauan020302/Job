@@ -3,7 +3,6 @@ package itacademy.project.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -23,11 +22,11 @@ public class Teacher {
     @Column(name = "age")
     private Integer age;
 
-//    @OneToMany
-//    @JoinColumn(name = "students_id")
-//    private List<Student> student;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne
-    @JoinColumn(name = "classes_id")
-    private Class aClass;
+    @JoinColumn(name = "cabinet_id")
+    private Cabinet cabinet;
 }
