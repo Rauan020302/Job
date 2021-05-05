@@ -1,5 +1,6 @@
 package itacademy.project.entity;
 
+import itacademy.project.enums.EnumSubject;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,12 @@ public class Teacher {
 
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "profession")
+    private EnumSubject profession;
 
     @OneToOne
     @JoinColumn(name = "user_id")

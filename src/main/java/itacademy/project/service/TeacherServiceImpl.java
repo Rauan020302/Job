@@ -31,6 +31,8 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = Teacher.builder()
                 .name(teacherModel.getName())
                 .age(teacherModel.getAge())
+                .gender(teacherModel.getGender())
+                .profession(teacherModel.getProfession())
                 .user(user)
                 .cabinet(cabinet).build();
         return teacherRepository.save(teacher);

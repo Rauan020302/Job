@@ -15,6 +15,8 @@ public class StudentModel {
 
     private Integer age;
 
+    private String gender;
+
     private Long markId;
 
     private Long teacherId;

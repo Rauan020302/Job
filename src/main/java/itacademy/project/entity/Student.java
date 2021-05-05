@@ -22,6 +22,9 @@ public class Student {
     @Column(name = "age")
     private Integer age;
 
+    @Column(name = "gender")
+    private String gender;
+
     @OneToOne
     @JoinColumn(name = "mark_id")
     private Mark mark;

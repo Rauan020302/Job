@@ -35,6 +35,7 @@ public class StudentServiceImpl implements StudentService {
                 .name(studentModel.getName())
                 .age(studentModel.getAge())
                 .mark(mark)
+                .gender(studentModel.getGender())
                 .cabinet(cabinet)
                 .teacher(teacher)
                 .user(user).build();

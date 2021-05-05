@@ -1,5 +1,6 @@
 package itacademy.project.model;
 
+import itacademy.project.enums.EnumSubject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,10 @@ public class TeacherModel {
     private String name;
 
     private Integer age;
+
+    private String gender;
+
+    private EnumSubject profession;
 
     private Long userId;
 
