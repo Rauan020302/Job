@@ -24,4 +24,8 @@ public class CabinetController {
     public Cabinet getCabinetById(@PathVariable Long cabinetId){
         return cabinetService.getCabinetById(cabinetId);
     }
+    @DeleteMapping("/{cabinetId}")
+    public Cabinet deleteCabinetById(@PathVariable Long cabinetId){
+        return cabinetService.deleteCabinetById(cabinetId);
+    }
 }

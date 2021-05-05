@@ -22,7 +22,17 @@ public class MarkServiceImpl implements MarkService {
     }
 
     @Override
-    public Mark getById(Long id) {
+    public Mark getMarkById(Long id) {
         return markRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Mark deleteMarkById(Long id) {
+        Mark mark = getMarkById(id);
+        if (mark != null){
+            markRepository.delete(mark);
+            return mark;
+        }
+        return null;
     }
 }

@@ -8,4 +8,5 @@ public interface CabinetService {
     List<Cabinet> getAllCabinet();
     Cabinet save(Cabinet cabinet);
     Cabinet getCabinetById(Long id);
+    Cabinet deleteCabinetById(Long id);
 }

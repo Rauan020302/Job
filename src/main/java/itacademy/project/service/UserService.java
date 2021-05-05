@@ -5,7 +5,8 @@ import itacademy.project.entity.User;
 import java.util.List;
 
 public interface UserService {
-    User save(User user);
-    User findById(Long id);
     List<User> getAllUsers();
+    User save(User user);
+    User getUserById(Long id);
+    User deleteUserById(Long id);
 }

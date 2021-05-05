@@ -1,6 +1,7 @@
 package itacademy.project.controller;
 
 import itacademy.project.entity.TimeTable;
+import itacademy.project.model.TimeTableModel;
 import itacademy.project.service.TimeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,16 @@ public class TimeTableController {
         return timeTableService.getAllTimeTables();
     }
     @PostMapping
-    public TimeTable save(@RequestBody TimeTable timeTable){
-        return timeTableService.save(timeTable);
+    public TimeTable save(@RequestBody TimeTableModel timeTableModel){
+        return timeTableService.save(timeTableModel);
     }
     @GetMapping("/{tableId}")
     public TimeTable getTimeTableById(@PathVariable Long tableId){
         return timeTableService.getTimeTableById(tableId);
+    }
+    @DeleteMapping("/{tableId}")
+    public TimeTable deleteTimeTableById(@PathVariable Long tableId){
+        return timeTableService.deleteTimeTableById(tableId);
+
     }
 }

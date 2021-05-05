@@ -7,5 +7,6 @@ import java.util.List;
 public interface MarkService {
      List<Mark> getAllMarks();
      Mark save(Mark mark);
-     Mark getById(Long id);
+     Mark getMarkById(Long id);
+     Mark deleteMarkById(Long id);
 }

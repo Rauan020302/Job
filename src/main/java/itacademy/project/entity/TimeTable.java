@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,8 +24,12 @@ public class TimeTable {
     private EnumTimeTable dayOfWeek;
 
     @Column(name = "date_start")
-    private LocalDate dateStart;
+    private LocalDateTime dateStart;
 
     @Column(name = "date_end")
-    private LocalDate dateEnd;
+    private LocalDateTime dateEnd;
+
+    @ManyToOne
+    @JoinColumn(name = "cabinet_id")
+    private Cabinet cabinet;
 }

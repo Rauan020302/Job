@@ -1,6 +1,7 @@
 package itacademy.project.controller;
 
 import itacademy.project.entity.Task;
+import itacademy.project.model.TaskModel;
 import itacademy.project.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,15 @@ public class TaskController {
         return taskService.getAllTasks();
     }
     @PostMapping
-    public Task save(@RequestBody Task task){
-        return taskService.save(task);
+    public Task save(@RequestBody TaskModel taskModel){
+        return taskService.save(taskModel);
     }
     @GetMapping("/{taskId}")
-    public Task getById(@PathVariable Long taskId){
-        return taskService.getById(taskId);
+    public Task getTaskById(@PathVariable Long taskId){
+        return taskService.getTaskById(taskId);
+    }
+    @DeleteMapping("/{taskId}")
+    public Task deleteTaskById(@PathVariable Long taskId){
+        return taskService.deleteTaskById(taskId);
     }
 }

@@ -17,12 +17,19 @@ public class UserController {
     public User save(@RequestBody User user){
         return userService.save(user);
     }
+
     @GetMapping("/{userId}")
     public User getUserById(@PathVariable Long userId){
-        return userService.findById(userId);
+        return userService.getUserById(userId);
     }
+
     @GetMapping()
     public List<User> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @DeleteMapping("/{userId}")
+    public User deleteUserById(@PathVariable Long userId){
+        return userService.deleteUserById(userId);
     }
 }

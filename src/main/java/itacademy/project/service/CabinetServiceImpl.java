@@ -25,4 +25,14 @@ public class CabinetServiceImpl implements CabinetService {
     public Cabinet getCabinetById(Long id) {
         return cabinetRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Cabinet deleteCabinetById(Long id) {
+        Cabinet cabinet = getCabinetById(id);
+        if (cabinet != null){
+            cabinetRepository.delete(cabinet);
+            return cabinet;
+        }
+        return null;
+    }
 }

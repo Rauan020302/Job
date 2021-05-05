@@ -23,7 +23,11 @@ public class MarkController {
     }
     @GetMapping("/{markId}")
     public Mark getMarkById(@PathVariable Long markId){
-        return markService.getById(markId);
+        return markService.getMarkById(markId);
+    }
+    @DeleteMapping("/{markId}")
+    public Mark deleteMarkById(@PathVariable Long markId){
+        return markService.deleteMarkById(markId);
     }
 
 }
