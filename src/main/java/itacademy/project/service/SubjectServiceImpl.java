@@ -22,7 +22,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject save(SubjectModel subjectModel) {
-        TimeTable timeTable = timeTableService.getTimeTableById(subjectModel.getTimeTable());
+        TimeTable timeTable = timeTableService.getTimeTableById(subjectModel.getTimeTableId());
         if (timeTable == null)return null;
         Subject subject = Subject.builder()
                 .name(subjectModel.getName())

@@ -27,7 +27,7 @@ public class TeacherServiceImpl implements TeacherService {
     public Teacher save(TeacherModel teacherModel) {
         User user = userService.getUserById(teacherModel.getUserId());
         Cabinet cabinet = cabinetService.getCabinetById(teacherModel.getCabinetId());
-        if (user == null || cabinet == null) return null;
+        //if (user == null || cabinet == null) return null;
         Teacher teacher = Teacher.builder()
                 .name(teacherModel.getName())
                 .age(teacherModel.getAge())
@@ -35,12 +35,8 @@ public class TeacherServiceImpl implements TeacherService {
                 .profession(teacherModel.getProfession())
                 .user(user)
                 .cabinet(cabinet).build();
-        return teacherRepository.save(teacher);
-    }
 
-    @Override
-    public Teacher getTeacherById(Long id) {
-        return teacherRepository.findById(id).orElse(null);
+        return teacherRepository.save(teacher);
     }
 
     @Override
@@ -51,5 +47,10 @@ public class TeacherServiceImpl implements TeacherService {
             return teacher;
         }
         return null;
+    }
+
+    @Override
+    public Teacher getTeacherById(Long id) {
+        return teacherRepository.findById(id).orElse(null);
     }
 }

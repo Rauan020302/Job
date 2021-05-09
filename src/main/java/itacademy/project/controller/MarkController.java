@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mark")
+@RequestMapping("/api/mark")
 public class MarkController {
     @Autowired
     private MarkService markService;

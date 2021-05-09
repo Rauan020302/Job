@@ -9,4 +9,5 @@ public interface MarkService {
      Mark save(Mark mark);
      Mark getMarkById(Long id);
      Mark deleteMarkById(Long id);
+     //List<Mark> getAllMarkByStudentName(String studentName);
 }

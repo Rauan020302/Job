@@ -3,7 +3,6 @@ package itacademy.project.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,11 +21,11 @@ public class User {
     private String password;
 
     @Column(name = "login",nullable = false,unique = true)
-    private String login;
+    private String username;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 
-    @Column(name = "role",nullable = false)
-    private Integer role;
+    @Column(name = "status",nullable = false)
+    private Long status;
 }

@@ -35,4 +35,9 @@ public class MarkServiceImpl implements MarkService {
         }
         return null;
     }
+
+//    @Override
+//    public List<Mark> getAllMarkByStudentName(String studentName) {
+//        return markRepository.findAllByName(studentName);
+//    }
 }

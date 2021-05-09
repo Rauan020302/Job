@@ -5,18 +5,14 @@ import itacademy.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @PostMapping
-    public User save(@RequestBody User user){
-        return userService.save(user);
-    }
 
     @GetMapping("/{userId}")
     public User getUserById(@PathVariable Long userId){
@@ -31,5 +27,13 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public User deleteUserById(@PathVariable Long userId){
         return userService.deleteUserById(userId);
+    }
+    @GetMapping("/get_name")
+    public String getName(Principal principal){
+        return principal.getName();
+    }
+    @DeleteMapping("/{userId}")
+    public User banById(@PathVariable Long userId){
+        return userService.banById(userId);
     }
 }
