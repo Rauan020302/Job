@@ -12,7 +12,7 @@ public interface UserService {
     User deleteUserById(Long id);
     User findByUsername(String login);
     String getTokenByAuthModel(AuthModel authModel);
-    User banById(Long id);
+    //User banById(Long id);
     User unBanById(Long id);
     List<User> findAllByStatus(Long status);
 }
