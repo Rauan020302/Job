@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class SubjectModel {
+
     private EnumSubject name;
 
     private Long timeTableId;

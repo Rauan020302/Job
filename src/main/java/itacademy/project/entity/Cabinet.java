@@ -22,4 +22,8 @@ public class Cabinet {
     @Column(name = "cabinet_name")
     private String name;
 
+
+//    @Column(name = "teacher_id")
+//    private Teacher teacher;
+
 }

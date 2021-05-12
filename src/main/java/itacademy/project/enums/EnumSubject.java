@@ -7,6 +7,6 @@ public enum EnumSubject {
     Geography,
     History,
     Biology,
-    PhysicalTraining,
+    PhysicalTraining
 
 }

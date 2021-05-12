@@ -11,6 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentModel {
+    private String password;
+
+    private String username;
+
+    private Long status;
+
     private String name;
 
     private Integer age;
@@ -20,8 +26,6 @@ public class StudentModel {
     private Long markId;
 
     private Long teacherId;
-
-    private Long userId;
 
     private Long cabinetId;
 }

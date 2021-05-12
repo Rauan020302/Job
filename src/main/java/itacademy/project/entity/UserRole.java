@@ -20,7 +20,7 @@ public class UserRole {
     private String roleName;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id"/*,nullable = false*/)
     private User user;
 
 }

@@ -21,6 +21,7 @@ public class TimeTable {
     private Long id;
 
     @Column(name = "day_of_week")
+    @Enumerated(EnumType.STRING)
     private EnumTimeTable dayOfWeek;
 
     @Column(name = "date_start")

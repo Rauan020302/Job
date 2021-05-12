@@ -22,9 +22,9 @@ public class TaskModel {
 
     private Long markId;
 
-    private Long subjectId;
+    //private Long subjectId;
 
     private LocalDate taskDate = LocalDate.now();
 
-    private LocalDate deadline;
+    private LocalDate deadline = LocalDate.now();
 }

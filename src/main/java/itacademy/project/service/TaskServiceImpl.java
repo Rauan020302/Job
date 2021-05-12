@@ -1,7 +1,6 @@
 package itacademy.project.service;
 
 import itacademy.project.entity.Mark;
-import itacademy.project.entity.Subject;
 import itacademy.project.entity.Task;
 import itacademy.project.model.TaskModel;
 import itacademy.project.repository.TaskRepository;
@@ -15,8 +14,8 @@ public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
     @Autowired
     private MarkService markService;
-    @Autowired
-    private SubjectService subjectService;
+//    @Autowired
+//    private SubjectService subjectService;
 
     @Override
     public List<Task> getAllTasks() {
@@ -26,14 +25,14 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task save(TaskModel taskModel) {
         Mark mark = markService.getMarkById(taskModel.getMarkId());
-        Subject subject = subjectService.getSubjectById(taskModel.getSubjectId());
-        if (mark == null || subject == null)return null;
+        //Subject subject = subjectService.getSubjectById(taskModel.getSubjectId());
+        //if (mark == null || subject == null)return null;
         Task task = Task.builder()
                 .taskText(taskModel.getTaskText())
                 .taskDate(taskModel.getTaskDate())
                 .deadline(taskModel.getDeadline())
-                .mark(mark)
-                .subject(subject).build();
+                .mark(mark).build();
+                //.subject(subject).build();
         return taskRepository.save(task);
     }
 

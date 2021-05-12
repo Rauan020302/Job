@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("api/auth/**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/user").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/api/user").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/student/**").permitAll()
@@ -32,23 +32,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE,"/api/timetable").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/timetable").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/timetable").permitAll()
-                .antMatchers("/api/teacher").hasAnyRole("TEACHER","ADMIN")
+                .antMatchers("/api/teacher").permitAll()/*hasAnyRole("TEACHER","ADMIN")*/
                 .antMatchers(HttpMethod.GET,"/api/mark").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/mark").hasAnyRole("TEACHER","ADMIN")
                 .antMatchers(HttpMethod.DELETE,"/api/mark").hasAnyRole("TEACHER","ADMIN")
-                .antMatchers(HttpMethod.POST,"/api/task").hasRole("TEACHER")
+                .antMatchers(HttpMethod.POST,"/api/task").permitAll()/*hasRole("TEACHER")*/
                 .antMatchers(HttpMethod.DELETE,"/api/task").hasRole("TEACHER")
                 .antMatchers(HttpMethod.GET,"/api/task").permitAll()
-                .antMatchers("/api/subject").hasRole("ADMIN")
-                .antMatchers("/api/cabinet").hasAnyRole("ADMIN","TEACHER")
+                .antMatchers("/api/subject").permitAll()/*hasRole("ADMIN")*/
+                .antMatchers("/api/cabinet").permitAll()/*hasAnyRole("ROLE_ADMIN","ROLE_TEACHER")*/
                 .and().httpBasic().and().logout().and().formLogin();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select login, password, status from user where username = ?")
-                .authoritiesByUsernameQuery("select u.login,ur.role_name from user_role ur join user u on ur.user_id = u.id where u.login = ? and status = 1");
+                .usersByUsernameQuery("select login, user_password, status from a_user where login = ?")
+                .authoritiesByUsernameQuery("select u.login,ur.role_name from user_role ur join a_user u on ur.user_id = u.id where u.login = ? and status = 1");
     }
 
     @Bean

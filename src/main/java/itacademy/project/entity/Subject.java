@@ -18,6 +18,7 @@ public class Subject {
     private Long id;
 
     @Column(name = "subject_name")
+    @Enumerated(EnumType.STRING)
     private EnumSubject name;
 
     @ManyToOne

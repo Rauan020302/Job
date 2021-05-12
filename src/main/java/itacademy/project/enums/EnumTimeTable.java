@@ -7,5 +7,5 @@ public enum EnumTimeTable {
     Thursday,
     Friday,
     Saturday,
-    Sunday
+    Sunday,
 }

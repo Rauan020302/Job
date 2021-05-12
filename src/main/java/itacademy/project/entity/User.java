@@ -1,5 +1,6 @@
 package itacademy.project.entity;
 
+import itacademy.project.enums.EnumSubject;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,9 +24,34 @@ public class User {
     @Column(name = "login",nullable = false,unique = true)
     private String username;
 
+    @Column(name = "status")
+    private Long status;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "age")
+    private Integer age;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "profession")
+    @Enumerated(EnumType.STRING)
+    private EnumSubject profession;
+
+    @OneToOne
+    @JoinColumn(name = "mark_id")
+    private Mark mark;
+
+    @ManyToOne
+    @JoinColumn(name = "cabinet_id")
+    private Cabinet cabinet;
+
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 
-    @Column(name = "status",nullable = false)
-    private Long status;
+//    @ManyToOne
+//    @JoinColumn(name = "teacher_id")
+//    private User teacher;
 }
