@@ -1,7 +1,6 @@
 package itacademy.project.controller;
 
 import itacademy.project.entity.Subject;
-import itacademy.project.model.SubjectModel;
 import itacademy.project.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/api/subject")
+@RequestMapping(name = "/api/subjects")
 public class SubjectController {
     @Autowired
     private SubjectService subjectService;
@@ -18,9 +17,10 @@ public class SubjectController {
     public List<Subject> getAllSubjects(){
         return subjectService.getAllSubjects();
     }
+
     @PostMapping
-    public Subject save(@RequestBody SubjectModel subjectModel){
-        return subjectService.save(subjectModel);
+    public Subject save(@RequestBody Subject subject){
+        return subjectService.save(subject);
     }
     @GetMapping("/{subjectId}")
     public Subject getSubjectById(@PathVariable Long subjectId){

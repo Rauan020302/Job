@@ -40,18 +40,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private EnumSubject profession;
 
-    @OneToOne
-    @JoinColumn(name = "mark_id")
-    private Mark mark;
-
-    @ManyToOne
-    @JoinColumn(name = "cabinet_id")
-    private Cabinet cabinet;
-
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 
-//    @ManyToOne
-//    @JoinColumn(name = "teacher_id")
-//    private User teacher;
+
+
 }

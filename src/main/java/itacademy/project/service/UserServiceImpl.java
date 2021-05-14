@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
+        if (user.getUsername().equals("") || user.getPassword().equals("") || user.getUsername() == null || user.getPassword() == null){
+            return null;
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user = userRepository.save(user);
         UserRole userRole = new UserRole();
@@ -73,16 +76,6 @@ public class UserServiceImpl implements UserService {
 
         return authResult;
     }
-//    @Override
-//    public User banById(Long id) {
-//        User user = getUserById(id);
-//        if(user == null) {
-//            return null;
-//        }
-//
-//        user.setStatus(0L);
-//        return save(user);
-//    }
 
     @Override
     public User unBanById(Long id) {
@@ -99,5 +92,18 @@ public class UserServiceImpl implements UserService {
     public List<User> findAllByStatus(Long status) {
         return userRepository.findAllByStatus(status);
     }
+
+
+
+//    @Override
+//    public User banById(Long id) {
+//        User user = getUserById(id);
+//        if(user == null) {
+//            return null;
+//        }
+//
+//        user.setStatus(0L);
+//        return save(user);
+//    }
 }
 

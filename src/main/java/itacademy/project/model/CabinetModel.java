@@ -1,19 +1,20 @@
 package itacademy.project.model;
 
-import itacademy.project.enums.EnumSubject;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+public class CabinetModel {
 
-public class SubjectModel {
+    private String description;
 
-    private EnumSubject name;
+    private String name;
 
-    private Long timeTableId;
+    private Long teacherId;
 }

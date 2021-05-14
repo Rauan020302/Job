@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -21,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/user").permitAll()
@@ -33,9 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/api/timetable").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/timetable").permitAll()
                 .antMatchers("/api/teacher").permitAll()/*hasAnyRole("TEACHER","ADMIN")*/
-                .antMatchers(HttpMethod.GET,"/api/mark").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/mark").hasAnyRole("TEACHER","ADMIN")
-                .antMatchers(HttpMethod.DELETE,"/api/mark").hasAnyRole("TEACHER","ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/task").permitAll()/*hasRole("TEACHER")*/
                 .antMatchers(HttpMethod.DELETE,"/api/task").hasRole("TEACHER")
                 .antMatchers(HttpMethod.GET,"/api/task").permitAll()

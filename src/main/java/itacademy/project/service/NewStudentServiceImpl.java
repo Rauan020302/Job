@@ -1,7 +1,6 @@
 package itacademy.project.service;
 
 import itacademy.project.entity.Cabinet;
-import itacademy.project.entity.Mark;
 import itacademy.project.entity.User;
 import itacademy.project.entity.UserRole;
 import itacademy.project.model.StudentModel;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class NewStudentServiceImpl implements NewStudentService {
@@ -17,10 +17,8 @@ public class NewStudentServiceImpl implements NewStudentService {
     private NewStudentRepository newStudentRepository;
     @Autowired
     private UserRoleService userRoleService;
-    @Autowired
-    private MarkService markService;
-    @Autowired
-    private CabinetService cabinetService;
+//    @Autowired
+//    private CabinetService cabinetService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
@@ -30,18 +28,21 @@ public class NewStudentServiceImpl implements NewStudentService {
 
     @Override
     public User save(StudentModel studentModel) {
-        Mark mark = markService.getMarkById(studentModel.getMarkId());
-        Cabinet cabinet = cabinetService.getCabinetById(studentModel.getCabinetId());
-        if (mark == null || cabinet == null )return null;
+       // Cabinet cabinet = cabinetService.getCabinetById(studentModel.getCabinetId());
+       // if (cabinet == null )return null;
         User user = User.builder()
                 .password(studentModel.getPassword())
                 .username(studentModel.getUsername())
                 .status(studentModel.getStatus())
                 .name(studentModel.getName())
                 .age(studentModel.getAge())
-                .mark(mark)
+                //.cabinet(cabinet)
                 .gender(studentModel.getGender())
-                .cabinet(cabinet).build();
+                .createdDate(LocalDateTime.now())
+                .build();
+        if (user.getUsername().equals("") || user.getPassword().equals("") || user.getUsername() == null || user.getPassword() == null){
+            return null;
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         newStudentRepository.save(user);
         UserRole userRole = new UserRole();
@@ -66,11 +67,5 @@ public class NewStudentServiceImpl implements NewStudentService {
         }
         return null;
 
-//        Student student = getStudentById(id);
-//        if (student != null){
-//            studentRepository.delete(student);
-//            return student;
-//        }
-//        return null;
     }
 }

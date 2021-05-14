@@ -33,4 +33,5 @@ public class TimeTable {
     @ManyToOne
     @JoinColumn(name = "cabinet_id")
     private Cabinet cabinet;
+
 }

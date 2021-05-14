@@ -1,16 +1,10 @@
 package itacademy.project.model;
 
-import itacademy.project.entity.Mark;
-import itacademy.project.entity.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Data
@@ -20,11 +14,13 @@ import java.time.LocalDate;
 public class TaskModel {
     private String taskText;
 
-    private Long markId;
+    private Integer mark;
 
-    //private Long subjectId;
+    private Long subjectId;
+
+    private Long userId;
 
     private LocalDate taskDate = LocalDate.now();
 
-    private LocalDate deadline = LocalDate.now();
+    private LocalDate deadline;
 }

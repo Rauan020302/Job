@@ -20,13 +20,16 @@ public class Task {
     @Column(name = "task_text")
     private String taskText;
 
-    @OneToOne
-    @JoinColumn(name = "mark_id")
-    private Mark mark;
+    @Column(name = "mark")
+    private Integer mark;
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "task_date")
     private LocalDate taskDate = LocalDate.now();

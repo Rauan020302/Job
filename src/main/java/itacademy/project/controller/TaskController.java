@@ -30,4 +30,12 @@ public class TaskController {
     public Task deleteTaskById(@PathVariable Long taskId){
         return taskService.deleteTaskById(taskId);
     }
+    @GetMapping("/by_user/{id}")
+    public List<Task> findAllByUserId(@PathVariable Long id){
+        return taskService.findAllByUser_Id(id);
+    }
+    @GetMapping("/by_subject/{id}")
+    public List<Task> findAllBySubjectId(@PathVariable Long id){
+        return taskService.findAllBySubject_Id(id);
+    }
 }

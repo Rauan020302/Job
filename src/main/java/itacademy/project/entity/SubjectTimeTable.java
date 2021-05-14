@@ -1,23 +1,25 @@
 package itacademy.project.entity;
 
-import itacademy.project.enums.EnumSubject;
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "subjects")
+@Table(name = "subject_time_table")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 @ToString
-public class Subject {
+public class SubjectTimeTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "subject_name")
-    @Enumerated(EnumType.STRING)
-    private EnumSubject subject;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subjects;
+
+    @ManyToOne
+    @JoinColumn(name = "time_table_id")
+    private TimeTable timeTables;
 }

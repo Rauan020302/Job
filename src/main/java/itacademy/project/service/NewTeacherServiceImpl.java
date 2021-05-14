@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class NewTeacherServiceImpl implements NewTeacherService {
     @Autowired
     private NewTeacherRepository newTeacherRepository;
-    @Autowired
-    private CabinetService cabinetService;
+//    @Autowired
+//    private CabinetService cabinetService;
     @Autowired
     private UserRoleService userRoleService;
     @Autowired
@@ -28,8 +29,6 @@ public class NewTeacherServiceImpl implements NewTeacherService {
 
     @Override
     public User save(TeacherModel teacherModel) {
-        Cabinet cabinet = cabinetService.getCabinetById(teacherModel.getCabinetId());
-        if (cabinet == null) return null;
         User user = User.builder()
                 .password(teacherModel.getPassword())
                 .username(teacherModel.getUsername())
@@ -38,7 +37,11 @@ public class NewTeacherServiceImpl implements NewTeacherService {
                 .age(teacherModel.getAge())
                 .gender(teacherModel.getGender())
                 .profession(teacherModel.getProfession())
-                .cabinet(cabinet).build();
+                .createdDate(LocalDateTime.now())
+                .build();
+        if (user.getUsername().equals("") || user.getPassword().equals("") || user.getUsername() == null || user.getPassword() == null){
+            return null;
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         newTeacherRepository.save(user);
         UserRole userRole = new UserRole();

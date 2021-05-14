@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 
 @Data
 @Builder
@@ -26,5 +28,5 @@ public class TeacherModel {
 
     private EnumSubject profession;
 
-    private Long cabinetId;
+    private LocalDateTime createdDate = LocalDateTime.now();
 }

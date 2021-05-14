@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 
 @Data
 @Builder
@@ -23,9 +25,5 @@ public class StudentModel {
 
     private String gender;
 
-    private Long markId;
-
-    private Long teacherId;
-
-    private Long cabinetId;
+    private LocalDateTime createdDate = LocalDateTime.now();
 }

@@ -10,4 +10,6 @@ public interface TaskService {
     Task save (TaskModel taskModel);
     Task getTaskById(Long id);
     Task deleteTaskById(Long id);
+    List<Task> findAllByUser_Id (Long id);
+    List<Task> findAllBySubject_Id(Long id);
 }

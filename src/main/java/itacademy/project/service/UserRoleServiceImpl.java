@@ -32,4 +32,14 @@ public class UserRoleServiceImpl implements UserRoleService {
     public UserRole getUserRoleById(Long id) {
         return userRoleRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public UserRole deleteUserRole(Long id) {
+        UserRole userRole = getUserRoleById(id);
+        if (userRole != null){
+            userRoleRepository.delete(userRole);
+            return userRole;
+        }
+        return null;
+    }
 }
