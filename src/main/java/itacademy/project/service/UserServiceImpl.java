@@ -78,32 +78,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User unBanById(Long id) {
-        User user = getUserById(id);
-        if(user == null) {
-            return null;
-        }
-
-        user.setStatus(1L);
-        return save(user);
-    }
-
-    @Override
     public List<User> findAllByStatus(Long status) {
         return userRepository.findAllByStatus(status);
     }
 
-
-
-//    @Override
-//    public User banById(Long id) {
-//        User user = getUserById(id);
-//        if(user == null) {
-//            return null;
-//        }
-//
-//        user.setStatus(0L);
-//        return save(user);
-//    }
 }
 

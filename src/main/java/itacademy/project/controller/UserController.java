@@ -33,8 +33,4 @@ public class UserController {
         return principal.getName();
     }
 
-//    @DeleteMapping("/{userId}")
-//    public User banById(@PathVariable Long userId){
-//        return userService.banById(userId);
-//    }
 }
