@@ -17,8 +17,8 @@ public class NewStudentServiceImpl implements NewStudentService {
     private NewStudentRepository newStudentRepository;
     @Autowired
     private UserRoleService userRoleService;
-//    @Autowired
-//    private CabinetService cabinetService;
+    @Autowired
+    private CabinetService cabinetService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
@@ -26,17 +26,23 @@ public class NewStudentServiceImpl implements NewStudentService {
         return newStudentRepository.findAll();
     }
 
+
+    @Override
+    public List<User> findAllByCabinet_Id(Long id) {
+        return newStudentRepository.findAllByCabinet_Id(id);
+    }
+
     @Override
     public User save(StudentModel studentModel) {
-       // Cabinet cabinet = cabinetService.getCabinetById(studentModel.getCabinetId());
-       // if (cabinet == null )return null;
+        Cabinet cabinet = cabinetService.getCabinetById(studentModel.getCabinetId());
+        if (cabinet == null )return null;
         User user = User.builder()
                 .password(studentModel.getPassword())
                 .username(studentModel.getUsername())
                 .status(studentModel.getStatus())
                 .name(studentModel.getName())
                 .age(studentModel.getAge())
-                //.cabinet(cabinet)
+                .cabinet(cabinet)
                 .gender(studentModel.getGender())
                 .createdDate(LocalDateTime.now())
                 .build();
@@ -66,6 +72,5 @@ public class NewStudentServiceImpl implements NewStudentService {
             return user;
         }
         return null;
-
     }
 }

@@ -43,6 +43,9 @@ public class User {
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 
+    @ManyToOne
+    @JoinColumn(name = "cabinet_id")
+    private Cabinet cabinet;
 
 
 }

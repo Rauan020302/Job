@@ -26,4 +26,6 @@ public class StudentModel {
     private String gender;
 
     private LocalDateTime createdDate = LocalDateTime.now();
+
+    private Long cabinetId;
 }

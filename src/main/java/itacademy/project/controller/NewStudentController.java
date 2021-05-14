@@ -26,4 +26,9 @@ public class NewStudentController {
     public User deleteStudentById(@PathVariable Long studentId){
         return newStudentService.deleteStudentById(studentId);
     }
+    @GetMapping("/by_cabinet/{studentId}")
+    public List<User> getStudentByCabinetId(@PathVariable Long studentId){
+        return newStudentService.findAllByCabinet_Id(studentId);
+    }
+
 }

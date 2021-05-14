@@ -10,5 +10,6 @@ public interface NewStudentService {
     User save(StudentModel studentModel);
     User getStudentById(Long id);
     User deleteStudentById(Long id);
+    List<User> findAllByCabinet_Id(Long id);
 
 }
