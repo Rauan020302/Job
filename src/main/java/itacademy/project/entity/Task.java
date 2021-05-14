@@ -35,5 +35,5 @@ public class Task {
     private LocalDate taskDate = LocalDate.now();
 
     @Column(name = "deadline")
-    private LocalDate deadline = LocalDate.now();
+    private LocalDate deadline;
 }

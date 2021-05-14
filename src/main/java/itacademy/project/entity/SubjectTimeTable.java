@@ -16,10 +16,10 @@ public class SubjectTimeTable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id")
+    @JoinColumn(name = "subject_id",nullable = false)
     private Subject subjects;
 
     @ManyToOne
-    @JoinColumn(name = "time_table_id")
+    @JoinColumn(name = "time_table_id",nullable = false)
     private TimeTable timeTables;
 }

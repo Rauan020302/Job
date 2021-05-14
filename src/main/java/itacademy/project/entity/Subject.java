@@ -17,7 +17,7 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "subject_name")
+    @Column(name = "subject_name",unique = true,nullable = false)
     @Enumerated(EnumType.STRING)
     private EnumSubject subject;
 }

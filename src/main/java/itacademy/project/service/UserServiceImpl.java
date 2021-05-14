@@ -67,7 +67,6 @@ public class UserServiceImpl implements UserService {
         User user = findByUsername(authModel.getUsername());
         if (user == null) authResult = "Неверный логин/пароль";
         else{
-
             if (passwordEncoder.matches(authModel.getPassword(),user.getPassword())){
                 String loginPassPair = user.getUsername() + ":" + authModel.getPassword();
                 authResult = "Basic " + Base64.getEncoder().encodeToString(loginPassPair.getBytes());
