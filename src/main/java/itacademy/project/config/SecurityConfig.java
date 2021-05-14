@@ -25,20 +25,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/user").permitAll()
-                .antMatchers(HttpMethod.DELETE,"/api/user").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/api/user/**").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/api/user/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/student/**").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/api/student/**").hasAnyRole("TEACHER","ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/student/**").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/api/timetable").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/timetable").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/timetable").permitAll()
-                .antMatchers("/api/teacher").permitAll()/*hasAnyRole("TEACHER","ADMIN")*/
-                .antMatchers(HttpMethod.POST,"/api/task").permitAll()/*hasRole("TEACHER")*/
+                .antMatchers(HttpMethod.POST,"/api/task").hasRole("TEACHER")
                 .antMatchers(HttpMethod.DELETE,"/api/task").hasRole("TEACHER")
                 .antMatchers(HttpMethod.GET,"/api/task").permitAll()
-                .antMatchers("/api/subject").permitAll()/*hasRole("ADMIN")*/
-                .antMatchers("/api/cabinet").permitAll()/*hasAnyRole("ROLE_ADMIN","ROLE_TEACHER")*/
+                .antMatchers("/api/cabinet/**").hasRole("ADMIN")
+                .antMatchers("/api/teacher").hasAnyRole("TEACHER","ADMIN")
+                .antMatchers("/api/subjectTT/**").hasRole("ADMIN")
+                .antMatchers("/api/subject/**").hasAnyRole("ADMIN","TEACHER")
+                .antMatchers("/api/cabinet/**").hasAnyRole("ADMIN","TEACHER")
                 .and().httpBasic().and().logout().and().formLogin();
     }
 
