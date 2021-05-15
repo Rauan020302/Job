@@ -20,6 +20,7 @@ public class QuizCardPlayer {
     private JButton nextButton;
     private boolean isShowAnswer;
 
+
     public static void main(String[] args) {
         QuizCardPlayer reader = new QuizCardPlayer();
         reader.go();
@@ -83,7 +84,7 @@ public class QuizCardPlayer {
         cardList = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null){
                 makeCard(line);
             }
