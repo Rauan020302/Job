@@ -19,5 +19,8 @@ public class ShoppingItem {
     @Column(name = "name",nullable = false)
     private String name;
 
+    @ManyToOne
+    private User user;
+
 
 }
