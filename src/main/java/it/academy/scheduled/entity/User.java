@@ -1,7 +1,6 @@
 package it.academy.scheduled.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,7 +11,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @ToString
+
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
